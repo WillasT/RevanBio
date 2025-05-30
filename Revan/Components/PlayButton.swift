@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct PlayButton : View {
+    
+    var onTap: () -> Void
+    
     var body: some View {
         Button(action: {
-            print("Tapped")
+            onTap()
         }) {
             HStack(spacing: 8){
                 Image(systemName: "play.fill")
@@ -32,7 +35,7 @@ struct DarkenOnPressButtonStyle: ButtonStyle {
         configuration.label
             .padding(.horizontal, 32)
             .padding(.vertical, 8)
-            .background(configuration.isPressed ? Color.blue.opacity(0.6) : Color.blue)
+            .background(configuration.isPressed ? Color.blue.opacity(0.6) : Color("main"))
             .foregroundColor(configuration.isPressed ? Color.primary.opacity(0.6) : Color.primary)
             .clipShape(RoundedRectangle(cornerRadius: 6))
             .scaleEffect(configuration.isPressed ? 0.9 : 1)
@@ -42,5 +45,7 @@ struct DarkenOnPressButtonStyle: ButtonStyle {
 
 
 #Preview {
-    PlayButton()
+    PlayButton {
+        print(">>> Button Tapped <<<")
+    }
 }

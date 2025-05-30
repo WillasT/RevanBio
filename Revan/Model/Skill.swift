@@ -10,4 +10,5 @@ struct Skill: Identifiable {
     let id = UUID()
     let name: String
     let imageName: String
+    let totalProjects: Int
 }
